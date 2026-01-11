@@ -4,14 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
     <title>Concientização Ambiental</title>
   </head>
-  <body>
-    {% include "header.html" %}
-    <input type="text"> <br>
-    <input type="text"> <br>
-    <input type="text">
-  </body>
+ <body>
+  {% include "header.html" %}
+    <div class="Contato_Container">
+      <div class="Contato_Mensagem">
+        <h2>Entre em contato conosco</h2>
+        <p>Se tem alguma sugestão para alterarmos nosso site, <br> por favor preencha o campos abaixo</p>
+        <form method="post" action="url_for('enviar_email')">
+          <div class="Contato_Formulario">
+          <input name="Nome" class="Contato_Texto" type="text" placeholder="Seu Nome" required>
+          <input name="Email" class="Contato_Texto" type="email" placeholder="Seu Email" required> 
+          <textarea name="Mensagem" class="Contato_Texto" placeholder="Sua Mensagem" required></textarea> 
+          <button type="submit">ENVIAR</button>
+        </form>
+      </div>
+    </div>
+     <div class="Contato_Info">
+      
+      <h2>Informações de contato</h2>
+      <div class="Contato_Linha">
+        <img src="{{ url_for('static', filename='imagens/local.png')}}" alt="">
+        <p>Endereço: Avenida Teste, 123 Centro, Piripiri, Piauí</p>
+      </div>
+      <div class="Contato_Linha">
+        <img src="{{ url_for('static', filename='imagens/telefone.png') }}" alt="">
+        <p>Telefone: (86) 9 1234-5678</p>
+      </div>
+      <div class="Contato_Linha">
+        <img src="{{ url_for('static', filename='imagens/e-mail.png') }}" alt="">
+        <p>Email: meioambienteprojeto1@gmail.com</p>
+      </div>
+    <div >
+      <iframe class="Contato_Mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.6815765426935!2d-41.77765591368049!3d-4.273335039178895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x79307f3ad3f412b%3A0xd5b51d2dbf2b1b7c!2sPar%C3%B3quia%20Nossa%20Senhora%20dos%20Rem%C3%A9dios!5e0!3m2!1spt-BR!2sbr!4v1768087071045!5m2!1spt-BR!2sbr" 
+      width="300px" 
+      height="auto" 
+      style="border:1px solid gray;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+
+      </iframe>
+    </div>
+    </div>
+   </div>
+ </body>
 
 
 </html>

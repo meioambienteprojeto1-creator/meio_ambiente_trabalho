@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
+    <title>Concientização Ambiental</title>
+  </head>
+  <body>
+    {% include "header.html" %}
+    <div class="Campanha_Inicio">
+      <h1>Ações sustentáveis em busca de um futuro melhor</h1>
+      <h3>Explore campanhas e outros conteúdos sobre a preservação do meio ambiente</h3>
+      <form method="GET" action="{{ url_for('campanha') }}">
+        <input type="text" name="q" placeholder="Pesquisar campanhas..." value="{{ query }}">
+        <button type="submit">Buscar</button>
+      </form>
+    </div>
+    <div class="Conteudo_Container">
+    <h2 class="Conteudo_Titulo">Conteúdos recentes:</h2>
+
+    {% for campanha in resultados %}
+    <div class="Conteudo_Campanha_Geral">
+        <div class="Conteudo_Data">
+            <a href="{{url_for('descricao', id=campanha.id)}}">{{campanha.titulo}}</a>
+            <p>{{ campanha.data }}</p>
+        </div>
+        <div class="Conteudo_Linha">
+            <img class="Conteudo_Imagem" src="{{ url_for('static', filename=campanha.imagem) }}" alt="imagem da campanha">
+            <p>{{ campanha.descricao }}</p>
+        </div>
+    </div>
+    {% else %}
+    <p>Nenhuma campanha encontrada.</p>
+    {% endfor %}
+
+</div>
+
+
+  </body>
+
+
+</html>

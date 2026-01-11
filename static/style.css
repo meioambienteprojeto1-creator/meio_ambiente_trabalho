@@ -5,20 +5,22 @@ body{
 }
 
 .HEADER{
-    width: 100%;
+        
+    width: auto;
     font-size: 24px;
     height: 50px;
     background-color: rgb(15, 87, 15);
-    
+    box-shadow: 3px 3px 6px gray;
+    border: 3px solid rgb(36, 56, 17);
 }
 
-.HEADER_link{
+.HEADER_Link{
     
     margin-right: 25px;
     color: rgb(253, 255, 224);
 }
 
-.HEADER_texto{
+.HEADER_Texto{
     
     margin-right: 50%;
     margin-left: 10px;
@@ -26,11 +28,35 @@ body{
     display: inline;
 }
 
-.HEADER_container{
+.HEADER_Container{
     padding-top: 10px;
     font-family: 'Times New Roman', Times, serif;
     color: rgb(253, 255, 224);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -40,50 +66,41 @@ body{
     background-color: rgb(255, 233, 206);
     border-bottom-left-radius: 5px;   
     border-bottom-right-radius: 5px;
+    box-shadow: 3px 3px 10px gray;
     
 }
 
-.Conteudo_Campanha1{
+.Conteudo_Campanha_Geral{
     border: 2px solid rgb(112, 112, 112);
     border-radius: 5px;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    box-shadow: 3px 3px 3px gray;
     margin-right: 1%;
     margin-left: 15px;
     padding-left: 5px;
+    margin-top: 2px;
+    margin-bottom: 5px;
 }
 
-.Conteudo_Campanha2{
-    border: 2px solid rgb(112, 112, 112);
-    border-radius: 5px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    margin-right: 1%;
-    margin-left: 15px;
-    padding-left: 5px;
-}
-
-.Conteudo_Campanha3{
-    border: 2px solid rgb(112, 112, 112);
-    border-radius: 5px;
-    margin-top: 2px;
-    margin-right: 1%;
+.Conteudo_Campanha_Geral:last-child{
     margin-bottom: 30px;
-    margin-left: 15px;
-    padding-left: 5px;
 }
+
+
 
 .Conteudo_Titulo{
     margin-left: 5px;
 }
 
 .Conteudo_Imagem{
-    width: 50px;
+    width: 60px;
     height: auto;
     margin-bottom: 10px;
+    word-wrap: break-word;
+    font-size: small;
 }
 
 .Conteudo_Linha{
+    
     display: flex;
     align-items: flex-start;
     gap: 10px;
@@ -98,5 +115,161 @@ body{
     margin-right: 10px;
     justify-content: space-between; 
     align-items: center;       
+    
+}
+
+.Conteudo_Data a{
+    color: black;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Campanha_Inicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Campanha_Inicio h1{
+    margin-bottom: 8px;
+}
+
+.Campanha_Inicio h3{
+    margin-top: 2px;
+}
+
+.Campanha_Inicio input{
+    width: 500px;
+    height: 25px;
+    margin-bottom: 5px;
+}
+
+.Campanha_Inicio button{
+    height: 30px;
+    width: auto;
+    color: rgb(46, 43, 38);
+    background-color: rgb(144, 187, 101);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Contato_Mensagem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid gray;
+    margin-top: 10px;
+}
+
+.Contato_Formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Contato_Formulario textarea{
+    height: 100px;
+}
+
+.Contato_Mensagem h2{
+    margin-bottom: 6px;
+}
+
+.Contato_Mensagem p{
+    margin-top: 2px;
+}
+
+.Contato_Mensagem button{
+    width: 300px;
+    height: 35px;
+    margin-bottom: 20px;
+    background-color: rgb(133, 199, 1);
+    color: azure;
+}
+
+.Contato_Texto{
+    margin-bottom: 6px;
+    width: 300px;
+    height: 30px;
+}
+
+.Contato_Container{
+    background-color: rgb(249, 255, 240);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+}
+
+
+.Contato_Info{
+    margin-top: 10px;
+    border: 2px solid grey;
+}
+
+.Contato_Info h2, .Contato_Mensagem h2, .Contato_Mensagem p{
+   margin-left:5px ;
+   margin-right: 5px;
+}
+
+.Contato_Info img{
+    width: 25px;
+    height: auto;
+    margin-left: 5px;
+}
+
+.Contato_Linha{
+    display: flex;
+    align-items: flex-start;
+    margin-top: 5px;
+
+}
+
+.Contato_Linha p{
+margin-top: 0;
+margin-left: 5px;
+margin-right: 5px;
+}
+
+.Contato_Mapa{
+    display: flex;
+    margin: 20px auto;
+    border-radius: 8px;
     
 }

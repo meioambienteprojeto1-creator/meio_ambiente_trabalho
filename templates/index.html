@@ -4,50 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
+
     <title>Concientização Ambiental</title>
   </head>
 
   <body>
+    
    {% include "header.html" %}
    <div class="Conteudo_Container">
     <h2 class="Conteudo_Titulo">Conteúdos ambientais</h2>
-    
-    <div class="Conteudo_Campanha1">
-      <div class="Conteudo_Data">
-        <h3>Campanha exemplo 1</h3>
-        <p>09/01/2026</p>
-      </div>
-      <div class="Conteudo_Linha">
-        <img class="Conteudo_Imagem" src="{{ url_for('static', filename='imagens/reciclagem.png') }}" alt="imagem reciclagem">
-        <p>Piripiri - Recicle corretamente e transforme o lixo em recursos. Cada ato consciente ajuda a reduzir o impacto no meio ambiente.</p>
-      </div>
-    </div>
-    
-    <div class="Conteudo_Campanha2">
-      <div class="Conteudo_Data">
-        <h3>Campanha exemplo 2</h3>
-        <p>09/01/2026</p>
-      </div>
-      <div class="Conteudo_Linha">
-        <img class="Conteudo_Imagem" src="{{ url_for('static', filename='imagens/agua.png') }}" alt="imagem agua">
-        <p>Piripiri - Plante árvores e ajude a purificar o ar, conservar a biodiversidade e tornar nossas cidades mais verdes.</p>
-      </div>
-    </div>
-    
-    <div class="Conteudo_Campanha3">
-      <div class="Conteudo_Data">
-        <h3>Campanha exemplo 3</h3>
-        <p >09/01/2026</p>
-      </div>
-      
-      
-      <div class="Conteudo_Linha">
-        <img class="Conteudo_Imagem" src="{{ url_for('static', filename='imagens/arvore.png') }}" alt="imagem arvore">
-        <p>Piripiri - Economize água! Pequenas atitudes no dia a dia garantem um futuro sustentável e preservam este recurso vital.</p>
-      </div>
-    </div>
 
-   </div>
+    {% for campanha in campanhas %}
+    <div class="Conteudo_Campanha_Geral">
+        <div class="Conteudo_Data">
+            <a href="{{ url_for('descricao', id=campanha.id) }}">{{ campanha.titulo }}</a>
+            <p>{{ campanha.data }}</p>
+        </div>
+        <div class="Conteudo_Linha">
+            <img class="Conteudo_Imagem" src="{{ url_for('static', filename=campanha.imagem) }}" alt="imagem da campanha">
+            <p>{{ campanha.descricao }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 
 
 
