@@ -5,13 +5,23 @@ body{
 }
 
 .HEADER{
-        
+    
     width: auto;
     font-size: 24px;
     height: 50px;
     background-color: rgb(15, 87, 15);
     box-shadow: 3px 3px 6px gray;
     border: 3px solid rgb(36, 56, 17);
+}
+
+.HEADER_Organizaçao{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.HEADER_Organizaçao p{
+    margin-top: auto;
 }
 
 .HEADER_Link{
@@ -22,7 +32,7 @@ body{
 
 .HEADER_Texto{
     
-    margin-right: 50%;
+
     margin-left: 10px;
     
     display: inline;
@@ -230,7 +240,7 @@ body{
 }
 
 .Contato_Container{
-    background-color: rgb(249, 255, 240);
+    background-color: rgb(255, 250, 229);
     display: flex;
     flex-direction: row;
     justify-content: center;
