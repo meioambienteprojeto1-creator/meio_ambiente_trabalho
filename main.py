@@ -1,9 +1,21 @@
 import os
 
-from flask import Flask, send_file, url_for, render_template, session, request, flash
+from flask import Flask, send_file, url_for, render_template, session, request, flash, redirect
+from flask_mail import Mail, Message
 from werkzeug.security import generate_password_hash, check_password_hash
+
 app = Flask(__name__)
 app.secret_key = "chave-secreta-super-segura"
+
+# Configurações do Flask-Mail
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'meioambienteprojeto1@gmail.com'  # Seu email
+app.config['MAIL_PASSWORD'] = 'sua_senha_de_app_aqui'  # Senha de app do Gmail
+app.config['MAIL_DEFAULT_SENDER'] = 'meioambienteprojeto1@gmail.com'
+
+mail = Mail(app)
 
 campanhas = [
     {
@@ -91,8 +103,40 @@ def main():
     app.run(port=int(os.environ.get('PORT', 80)), debug=True)
 
 
-@app.route("/contato")
+@app.route("/contato", methods=["GET", "POST"])
 def contato():
+    if request.method == "POST":
+        nome = request.form.get("Nome")
+        email = request.form.get("Email")
+        mensagem = request.form.get("Mensagem")
+        
+        try:
+            # Criar mensagem de email
+            msg = Message(
+                subject=f"Contato do site - {nome}",
+                recipients=['meioambienteprojeto1@gmail.com'],
+                body=f"""
+Nova mensagem recebida do formulário de contato:
+
+Nome: {nome}
+Email: {email}
+
+Mensagem:
+{mensagem}
+                """,
+                reply_to=email
+            )
+            
+            # Enviar email
+            mail.send(msg)
+            flash("Mensagem enviada com sucesso! Entraremos em contato em breve.", "success")
+            
+        except Exception as e:
+            flash(f"Erro ao enviar mensagem. Tente novamente mais tarde.", "danger")
+            print(f"Erro ao enviar email: {str(e)}")
+        
+        return redirect(url_for('contato'))
+    
     return render_template("contato.html")
 
 
