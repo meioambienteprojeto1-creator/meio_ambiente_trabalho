@@ -13,9 +13,9 @@ app.secret_key = "chave-secreta-super-segura"
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'meioambienteprojeto1@gmail.com'  # Seu email
-app.config['MAIL_PASSWORD'] = 'segredo'  # Senha de app do Gmail
-app.config['MAIL_DEFAULT_SENDER'] = 'meioambienteprojeto1@gmail.com'
+app.config['MAIL_USERNAME'] = 'seu-email@gmail.com'
+app.config['MAIL_PASSWORD'] = 'sua-senha-de-app'
+app.config['MAIL_DEFAULT_SENDER'] = 'seu-email@gmail.com'
 
 mail = Mail(app)
 
