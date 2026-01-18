@@ -28,7 +28,7 @@ def get_campanhas():
     campanhas = []
 
     docs = (
-        db.collection("campanhas")
+        db.collection("conteudo")
         .order_by("id")
         .stream()
     )
@@ -51,6 +51,7 @@ usuarios = {
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    campanhas = get_campanhas()
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -66,6 +67,7 @@ def login():
 
 @app.route("/logout")
 def logout():
+    campanhas = get_campanhas()
     session.pop("usuario", None)
     flash("Você saiu da conta", "info")
     return render_template("index.html", campanhas=campanhas)
