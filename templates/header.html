@@ -1,18 +1,22 @@
-<nav class="HEADER">
-      <div class="HEADER_Container">
-        <div class="HEADER_Organizaçao">
-       <p class="HEADER_Texto">Concientização Ambiental</p>
-       <div>
-       <a class="HEADER_Link" href="{{url_for('index')}}">Inicio</a>
-       <a class="HEADER_Link" href="{{url_for('campanha')}}">Campanhas</a>
-       <a class="HEADER_Link" href="{{url_for('contato')}}">Contato</a>
-        {% if session.get('usuario') %}
-            <span>Olá, {{ session['usuario'] }}</span>
-            <a class="HEADER_Link" href="{{ url_for('logout') }}">Logout</a>
-        {% else %}
-            <a class="HEADER_Link" href="{{ url_for('login') }}">Login</a>
-        {% endif %}
-      </div>
-      </div>
-      </div>
-    </nav>
+<nav class="header">
+    <div class="container header-content">
+        <a href="{{url_for('index')}}" class="logo">
+            Consciência Ambiental
+        </a>
+        
+        <div class="nav">
+            <a class="nav-link" href="{{url_for('index')}}">Início</a>
+            <a class="nav-link" href="{{url_for('campanha')}}">Campanhas</a>
+            <a class="nav-link" href="{{url_for('contato')}}">Contato</a>
+            
+            {% if session.get('usuario') %}
+                <div class="user-info">
+                    <span>{{ session['usuario'] }}</span>
+                    <a href="{{ url_for('logout') }}" class="btn btn-primary btn-sm">Sair</a>
+                </div>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-primary btn-sm">Entrar</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>

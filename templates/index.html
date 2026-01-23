@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
+    <title>Consciência Ambiental - Início</title>
+</head>
 
-    <title>Concientização Ambiental</title>
-  </head>
-
-  <body>
+<body>
+    {% include "header.html" %}
     
-   {% include "header.html" %}
-   <div class="Conteudo_Container">
-    <h2 class="Conteudo_Titulo">Conteúdos ambientais</h2>
-
-    {% for campanha in campanhas %}
-    <div class="Conteudo_Campanha_Geral">
-        <div class="Conteudo_Data">
-            <a href="{{ url_for('descricao', id=campanha.id) }}">{{ campanha.titulo }}</a>
-            <p>{{ campanha.data }}</p>
+    <!-- Hero Section -->
+    <section class="hero-index">
+        <div class="container">
+            <h1>Consciência Ambiental para um Mundo Melhor</h1>
+            <p class="hero-index-subtitle">Junte-se a nós na missão de preservar nosso planeta para as futuras gerações</p>
         </div>
-        <div class="Conteudo_Linha">
-            <img class="Conteudo_Imagem" src="{{ url_for('static', filename=campanha.imagem) }}" alt="imagem da campanha">
-            <p>{{ campanha.descricao }}</p>
+    </section>
+
+    <!-- Conteúdos em Matriz 4x4 -->
+    <main class="container">
+        <h2 class="index-section-title">Últimas Campanhas Ambientais</h2>
+        
+        <div class="index-grid">
+            {% for campanha in campanhas %}
+            <article class="index-container fade-in">
+                <div class="index-header">
+                    <a href="{{ url_for('descricao', id=campanha.id) }}" class="index-title">
+                        {{ campanha.titulo }}
+                    </a>
+                    <small class="index-date">{{ campanha.data }}</small>
+                </div>
+                
+                <div class="index-content">
+                    <img class="index-image" src="{{ url_for('static', filename=campanha.imagem) }}" alt="{{ campanha.titulo }}">
+                    <p class="index-description">{{ campanha.descricao }}</p>
+                </div>
+            </article>
+            {% endfor %}
         </div>
-    </div>
-    {% endfor %}
-</div>
-
-
-
-
-
-  </body>
+    </main>
+</body>
 </html>

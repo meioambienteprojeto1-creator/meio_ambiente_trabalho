@@ -1,68 +1,122 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
-    <title>Concientização Ambiental</title>
-  </head>
- <body>
-  {% include "header.html" %}
-  
-  <!-- Mensagens Flash -->
-  {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      <div class="flash-messages">
-        {% for category, message in messages %}
-          <div class="flash-message flash-{{ category }}">
-            {{ message }}
-          </div>
-        {% endfor %}
-      </div>
-    {% endif %}
-  {% endwith %}
-  
-    <div class="Contato_Container">
-      <div class="Contato_Mensagem">
-        <h2>Entre em contato conosco</h2>
-        <p>Se tem alguma sugestão para alterarmos nosso site, <br> por favor preencha o campos abaixo</p>
-        <form  method="post">
-          <div class="Contato_Formulario">
-          <input name="Nome" class="Contato_Texto" type="text" placeholder="Seu Nome" required>
-          <input name="Email" class="Contato_Texto" type="email" placeholder="Seu Email" required> 
-          <textarea name="Mensagem" class="Contato_Texto" placeholder="Sua Mensagem" required></textarea> 
-          <button type="submit">ENVIAR</button>
-        </form>
-      </div>
-    </div>
-     <div class="Contato_Info">
-      
-      <h2>Informações de contato</h2>
-      <div class="Contato_Linha">
-        <img src="{{ url_for('static', filename='imagens/local.png')}}" alt="">
-        <p>Endereço: Avenida Teste, 123 Centro, Piripiri, Piauí</p>
-      </div>
-      <div class="Contato_Linha">
-        <img src="{{ url_for('static', filename='imagens/telefone.png') }}" alt="">
-        <p>Telefone: (86) 9 1234-5678</p>
-      </div>
-      <div class="Contato_Linha">
-        <img src="{{ url_for('static', filename='imagens/e-mail.png') }}" alt="">
-        <p>Email: meioambienteprojeto1@gmail.com</p>
-      </div>
-    <div>
-      <iframe class="Contato_Mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.6815765426935!2d-41.77765591368049!3d-4.273335039178895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x79307f3ad3f412b%3A0xd5b51d2dbf2b1b7c!2sPar%C3%B3quia%20Nossa%20Senhora%20dos%20Rem%C3%A9dios!5e0!3m2!1spt-BR!2sbr!4v1768087071045!5m2!1spt-BR!2sbr" 
-      width="300px" 
-      height="auto" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-    </div>
-   </div>
- </body>
+    <title>Contato - Consciência Ambiental</title>
+</head>
+<body>
+    {% include "header.html" %}
+    
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Entre em Contato</h1>
+            <p class="contact-hero-subtitle">Tem alguma dúvida ou sugestão? Estamos aqui para ajudar!</p>
+        </div>
+    </section>
 
+    <!-- Mensagens Flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
 
+    <!-- Formulário e Informações -->
+    <main class="contact-container">
+        <!-- Formulário de Contato -->
+        <section class="contact-form-section">
+            <h2>Envie sua mensagem</h2>
+            <p>Preencha o formulário abaixo e entraremos em contato o mais breve possível.</p>
+            
+            <form method="post" class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome completo *</label>
+                        <input type="text" id="nome" name="Nome" placeholder="Seu nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="Email" placeholder="seu@email.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensagem">Mensagem *</label>
+                    <textarea id="mensagem" name="Mensagem" placeholder="Digite sua mensagem aqui..." required></textarea>
+                </div>
+                
+                <button type="submit" class="contact-submit-btn">Enviar Mensagem</button>
+            </form>
+        </section>
+
+        <!-- Informações de Contato -->
+        <section class="contact-info-section">
+            <div>
+                <h2>Informações de Contato</h2>
+                <p>Estamos sempre disponíveis para conversar sobre projetos ambientais.</p>
+            </div>
+            
+            <div class="contact-info-items">
+                <div class="contact-info-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3>Endereço</h3>
+                        <p>Avenida Teste, 123 Centro<br>Piripiri, Piauí - CEP: 64260-000</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h3>Telefone</h3>
+                        <p>(86) 9 1234-5678<br>Segunda a Sexta: 8h às 18h</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-details">
+                        <h3>E-mail</h3>
+                        <p>meioambienteprojeto1@gmail.com<br>Respondemos em até 24 horas</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mapa -->
+            <div class="contact-map">
+                <h3>Nossa Localização</h3>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.6815765426935!2d-41.77765591368049!3d-4.273335039178895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x79307f3ad3f412b%3A0xd5b51d2dbf2b1b7c!2sPar%C3%B3quia%20Nossa%20Senhora%20dos%20Rem%C3%A9dios!5e0!3m2!1spt-BR!2sbr!4v1768087071045!5m2!1spt-BR!2sbr" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Social Media (opcional) -->
+            <div class="contact-social">
+                <h3>Siga-nos nas redes sociais</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Instagram">📱</a>
+                    <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                    <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                    <a href="#" class="social-link" aria-label="YouTube">📹</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
 </html>
