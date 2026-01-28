@@ -27,14 +27,16 @@
             {% for campanha in campanhas %}
             <article class="index-container fade-in">
                 <div class="index-header">
-                    <a href="{{ url_for('descricao', id=campanha.id) }}" class="index-title">
+                    <!-- ✅ Usa o título como parâmetro na URL -->
+                    <a href="{{ url_for('descricao', titulo=campanha.titulo) }}" class="index-title">
                         {{ campanha.titulo }}
                     </a>
                     <small class="index-date">{{ campanha.data }}</small>
                 </div>
                 
                 <div class="index-content">
-                    <img class="index-image" src="{{ url_for('static', filename=campanha.imagem) }}" alt="{{ campanha.titulo }}">
+                    <!-- ✅ Imagem carrega diretamente da URL -->
+                    <img class="index-image" src="{{ campanha.imagem }}" alt="{{ campanha.titulo }}">
                     <p class="index-description">{{ campanha.descricao }}</p>
                 </div>
             </article>

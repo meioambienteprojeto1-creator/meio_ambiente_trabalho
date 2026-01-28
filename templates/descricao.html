@@ -5,18 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
-    <title>Concientização Ambiental</title>
+    <title>{% if campanha %}{{ campanha.titulo }} - {% endif %}Conscientização Ambiental</title>
   </head>
   <body>
     {% include "header.html" %}
-    <div class="Descrição_Container">
-    <img class="Conteudo_Imagem" src="{{ url_for('static', filename=campanha.imagem) }}" alt="imagem da campanha" style="width: 100px; height: auto">
-        <p>{{campanha.titulo}}</p>
+    
+    {% if campanha %}
+    <!-- Hero Section -->
+    <section class="detail-hero">
+        <div class="container">
+            <div class="detail-breadcrumb">
+                <a href="{{ url_for('index') }}">Início</a>
+                <span>›</span>
+                <a href="{{ url_for('campanha') }}">Campanhas</a>
+                <span>›</span>
+                <span>{{ campanha.titulo }}</span>
+            </div>
+            <h1>{{ campanha.titulo }}</h1>
+            <div class="detail-meta">
+                <span>📅 {{ campanha.data }}</span>
+                <span>•</span>
+                <span>✍️ {{ campanha.autor }}</span>
+                <span>•</span>
+                <span>🌱 Sustentabilidade</span>
+            </div>
+        </div>
+    </section>
 
+    <!-- Conteúdo Principal -->
+    <main class="container detail-main">
+        <article class="detail-article">
+            <!-- Imagem Principal -->
+            <div class="detail-image-container">
+                <img src="{{ campanha.imagem }}" alt="{{ campanha.titulo }}">
+            </div>
 
-    </div>
+            <!-- Resumo Destacado -->
+            <div class="detail-summary">
+                <div class="detail-summary-icon">💡</div>
+                <div>
+                    <h2>Sobre esta campanha</h2>
+                    <p>{{ campanha.descricao }}</p>
+                </div>
+            </div>
+
+            <!-- Descrição Completa -->
+            <div class="detail-content">
+                <h2>Descrição Detalhada</h2>
+                <p>{{ campanha.descricao_avancada }}</p>
+            </div>
+
+            <!-- Card do Autor -->
+            <div class="detail-author">
+                <div class="detail-author-avatar">
+                    {{ campanha.autor[0].upper() }}
+                </div>
+                <div>
+                    <h3>{{ campanha.autor }}</h3>
+                    <p>Autor da Campanha</p>
+                    <small>{{ campanha.autor_email }}</small>
+                </div>
+            </div>
+
+            <!-- Botões de Ação -->
+            <div class="detail-actions">
+                <a href="{{ url_for('campanha') }}" class="btn-secondary">
+                    ← Ver todas as campanhas
+                </a>
+                <a href="{{ url_for('criar_campanha') }}" class="btn-primary">
+                    Criar minha campanha +
+                </a>
+            </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="detail-sidebar">
+            <!-- Tags -->
+            <div class="sidebar-card">
+                <h3>Categorias</h3>
+                <div class="detail-tags">
+                    <span>🌍 Meio Ambiente</span>
+                    <span>♻️ Sustentabilidade</span>
+                    <span>🌱 Conscientização</span>
+                </div>
+            </div>
+
+            <!-- Compartilhar -->
+            <div class="sidebar-card">
+                <h3>Compartilhar</h3>
+                <div class="share-buttons">
+                    <button title="Copiar link">🔗 Link</button>
+                    <button title="Compartilhar">📤 Compartilhar</button>
+                </div>
+            </div>
+
+            <!-- Estatísticas -->
+            <div class="sidebar-card">
+                <h3>Impacto</h3>
+                <div class="detail-stats">
+                    <div>
+                        <div class="stat-icon">👁️</div>
+                        <p>Visualizações</p>
+                    </div>
+                    <div>
+                        <div class="stat-icon">❤️</div>
+                        <p>Apoiadores</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+    
+    {% else %}
+    <section class="hero">
+        <div class="container">
+            <div class="empty-state">
+                <div class="empty-state-icon">🌱</div>
+                <h3>Campanha não encontrada</h3>
+                <p>A campanha que você está procurando não existe ou foi removida.</p>
+                <a href="{{ url_for('index') }}" class="btn btn-primary mt-2">Voltar para início</a>
+            </div>
+        </div>
+    </section>
+    {% endif %}
 
   </body>
-
-
 </html>

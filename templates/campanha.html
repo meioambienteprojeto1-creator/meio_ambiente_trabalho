@@ -28,12 +28,7 @@
     <!-- Campanhas em Matriz 4x4 -->
     <main class="container">
         <!-- Filtros opcionais -->
-        <div class="campaigns-filters">
-            <button class="filter-btn active">Todas</button>
-            <button class="filter-btn">Recentes</button>
-            <button class="filter-btn">Populares</button>
-            <button class="filter-btn">Em destaque</button>
-        </div>
+     
         
         <div class="campaigns-container">
             <h2 class="index-section-title">Campanhas Ambientais</h2>
@@ -42,11 +37,13 @@
                 {% for campanha in resultados %}
                 <article class="campaign-card fade-in">
                     <div class="campaign-image-container">
-                        <img class="campaign-image" src="{{ url_for('static', filename=campanha.imagem) }}" alt="{{ campanha.titulo }}">
+                        <!-- ✅ Imagem carrega diretamente da URL sem url_for -->
+                        <img class="campaign-image" src="{{ campanha.imagem }}" alt="{{ campanha.titulo }}">
                     </div>
                     
                     <div class="campaign-header">
-                        <a href="{{url_for('descricao', id=campanha.id)}}" class="campaign-title-link">
+                        <!-- ✅ Usa o título como parâmetro na URL -->
+                        <a href="{{ url_for('descricao', titulo=campanha.titulo) }}" class="campaign-title-link">
                             <h3 class="campaign-title">{{ campanha.titulo }}</h3>
                         </a>
                         <small class="campaign-date">{{ campanha.data }}</small>
@@ -59,7 +56,8 @@
                             <span class="campaign-tag">Ambiental</span>
                             <span class="campaign-tag">Sustentabilidade</span>
                         </div>
-                        <a href="{{url_for('descricao', id=campanha.id)}}" class="campaign-read-more">
+                        <!-- ✅ Usa o título como parâmetro na URL -->
+                        <a href="{{ url_for('descricao', titulo=campanha.titulo) }}" class="campaign-read-more">
                             Ver mais
                         </a>
                     </div>
