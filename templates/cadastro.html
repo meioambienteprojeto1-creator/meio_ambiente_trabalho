@@ -9,7 +9,13 @@
 </head>
 <body>
     {% include "header.html" %}
-    <h2>Cadastro de Usuário</h2>
+     <!-- Hero Section -->
+    <section class="auth-hero">
+        <div class="container">
+            <h1>Crie Seu Cadastro</h1>
+            <p class="auth-hero-subtitle">Crie sua conta para participar das campanhas ambientais</p>
+        </div>
+    </section>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -18,15 +24,29 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-
+<main class="auth-container">
+<div class="auth-card">
     <form method="POST">
-        <input type="text" name="nome" placeholder="Nome completo" required><br><br>
-        <input type="email" name="email" placeholder="Email" required><br><br>
-        <input type="password" name="password" placeholder="Senha (mínimo 4 caracteres)" minlength="4" required><br><br>
-        <input type="password" name="confirmar" placeholder="Confirme a senha" minlength="4" required><br><br>
-        <button type="submit">Cadastrar</button>
+        <div class="auth-form-group">
+            <label for="user-name">Nome de usuário</label>
+            <input type="text" id="user-name" class="auth-input" name="nome" placeholder="Nome completo" required><br>
+        <div class="auth-form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="auth-input" name="email" placeholder="Email" required><br>
+        </div>
+        <div class="auth-form-group">
+            <label for="password">Senha</label>
+            <input type="password" id="password" class="auth-input" name="password" placeholder="Senha (mínimo 4 caracteres)" minlength="4" required><br>
+        </div>
+        <div class="auth-form-group">
+            <label for="check-password">Confirmar Senha</label>
+            <input type="password" id="check-password" class="auth-input" name="confirmar" placeholder="Confirme a senha" minlength="4" required><br>
+        </div>
+        <button class="auth-submit-btn" type="submit">Cadastrar</button>
     </form>
 
     <p>Já tem uma conta? <a href="{{ url_for('login') }}">Faça login aqui</a></p>
+</div>
+</main>
 </body>
 </html>
