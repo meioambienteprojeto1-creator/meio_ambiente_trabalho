@@ -1,8 +1,6 @@
-# Dev tools
+# Dev environment
+pip
 autopep8
 
-# App dependencies
-Flask
-firebase-admin
-Flask-Mail
-Werkzeug
+# App
+flask

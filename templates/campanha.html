@@ -1,105 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Campanhas - Consciência Ambiental</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
-    <link
-      rel="icon"
-      href="{{ url_for('static', filename='icons/favicon.ico') }}"
-      type="image/x-icon"
-    />
-  </head>
-  <body>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
     {% include "header.html" %}
-
+    
     <!-- Hero Section -->
     <section class="campaigns-hero">
-      <div class="container">
-        <h1>Ações sustentáveis para um futuro melhor</h1>
-        <p class="campaigns-hero-subtitle">
-          Explore campanhas e conteúdos sobre preservação ambiental
-        </p>
-
-        <form
-          method="GET"
-          action="{{ url_for('campanha') }}"
-          class="campaigns-search-form"
-        >
-          <input
-            type="text"
-            name="q"
-            placeholder="Pesquisar campanhas..."
-            value="{{ query }}"
-            class="campaigns-search-input"
-          />
-          <button type="submit" class="campaigns-search-btn">Buscar</button>
-        </form>
-      </div>
+        <div class="container">
+            <h1>Ações sustentáveis para um futuro melhor</h1>
+            <p class="campaigns-hero-subtitle">Explore campanhas e conteúdos sobre preservação ambiental</p>
+            
+            <form method="GET" action="{{ url_for('campanha') }}" class="campaigns-search-form">
+                <input type="text" name="q" placeholder="Pesquisar campanhas..." value="{{ query }}" class="campaigns-search-input">
+                <button type="submit" class="campaigns-search-btn">Buscar</button>
+            </form>
+        </div>
     </section>
     <div class="criar_campanha">
-      <a href="{{ url_for('criar_campanha') }}">crie sua campanha aqui</a>
+        <a href="{{ url_for('criar_campanha') }}">crie sua campanha aqui</a>
     </div>
     <!-- Campanhas em Matriz 4x4 -->
     <main class="container">
-      <!-- Filtros opcionais -->
-
-      <div class="campaigns-container">
-        <h2 class="index-section-title">Campanhas Ambientais</h2>
-
-        <div class="index-column">
-          {% for campanha in resultados %}
-          <article class="index-container fade-in">
-            <div class="index-header">
-              <a
-                href="{{ url_for('descricao', id=campanha.id) }}"
-                class="index-title"
-              >
-                {{ campanha.titulo }}
-              </a>
-              <small class="index-date">{{ campanha.data }}</small>
+        <!-- Filtros opcionais -->
+     
+        
+        <div class="campaigns-container">
+            <h2 class="index-section-title">Campanhas Ambientais</h2>
+            
+            <div class="campaigns-grid">
+                {% for campanha in resultados %}
+                <article class="campaign-card fade-in">
+                    <div class="campaign-image-container">
+                        <!-- ✅ Imagem carrega diretamente da URL sem url_for -->
+                        <img class="campaign-image" src="{{ campanha.imagem }}" alt="{{ campanha.titulo }}">
+                    </div>
+                    
+                    <div class="campaign-header">
+                        <!-- ✅ Usa o título como parâmetro na URL -->
+                        <a href="{{ url_for('descricao', titulo=campanha.titulo) }}" class="campaign-title-link">
+                            <h3 class="campaign-title">{{ campanha.titulo }}</h3>
+                        </a>
+                        <small class="campaign-date">{{ campanha.data }}</small>
+                    </div>
+                    
+                    <p class="campaign-description">{{ campanha.descricao }}</p>
+                    
+                    <div class="campaign-footer">
+                        <div class="campaign-tags">
+                            <span class="campaign-tag">Ambiental</span>
+                            <span class="campaign-tag">Sustentabilidade</span>
+                        </div>
+                        <!-- ✅ Usa o título como parâmetro na URL -->
+                        <a href="{{ url_for('descricao', titulo=campanha.titulo) }}" class="campaign-read-more">
+                            Ver mais
+                        </a>
+                    </div>
+                </article>
+                {% else %}
+                <div class="empty-state" style="grid-column: 1 / -1;">
+                    <div class="empty-state-icon">🌱</div>
+                    <h3>Nenhuma campanha encontrada</h3>
+                    <p>Parece que ainda não há campanhas cadastradas ou sua busca não retornou resultados.</p>
+                    <a href="{{ url_for('index') }}" class="btn btn-primary mt-2">Voltar para início</a>
+                </div>
+                {% endfor %}
             </div>
-
-            <div class="index-content">
-              <img
-                class="index-image"
-                src="{{ campanha.imagem }}"
-                alt="{{ campanha.titulo }}"
-              />
-              <div class="campaign-details">
-                <p class="index-description">{{ campanha.descricao }}</p>
-                {% if campanha.descricao_avancada %}
-                <p class="campaign-advanced-description">
-                  {{ campanha.descricao_avancada[:150] }}...
-                </p>
-                {% endif %}
-                <a
-                  href="{{ url_for('descricao', id=campanha.id) }}"
-                  class="campaign-read-link"
-                  >Leia mais →</a
-                >
-              </div>
-            </div>
-          </article>
-          {% else %}
-          <div class="empty-state">
-            <div class="empty-state-icon">🌱</div>
-            <h3>Nenhuma campanha encontrada</h3>
-            <p>
-              Parece que ainda não há campanhas cadastradas ou sua busca não
-              retornou resultados.
-            </p>
-            <a href="{{ url_for('index') }}" class="btn btn-primary mt-2"
-              >Voltar para início</a
-            >
-          </div>
-          {% endfor %}
         </div>
-      </div>
     </main>
-  </body>
+</body>
 </html>

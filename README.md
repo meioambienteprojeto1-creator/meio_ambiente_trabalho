@@ -1,22 +1,21 @@
-# Projeto Meio Ambiente
+#  Projeto Meio Ambiente
 
-## Descrição
+##  Descrição
 
-Aplicação web desenvolvida em **Python com Flask** e **Firebase Firestore** para divulgação de campanhas ambientais.
+Aplicação web desenvolvida em **Python com Flask** e **Firebase Firestore** para divulgação de campanhas ambientais.  
 
 O sistema permite:
-
-- Visualização de campanhas
-- Busca de campanhas por título ou descrição
-- Cadastro de usuários
-- Contato via formulário
-- Login básico (usuário/admin)
+-  Visualização de campanhas
+-  Busca de campanhas por título ou descrição
+-  Cadastro de usuários
+-  Contato via formulário
+-  Login básico (usuário/admin)
 
 As páginas usam **Jinja2** para renderização dinâmica dos templates.
 
 ---
 
-## Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 - Python 3.x
 - Flask
@@ -28,9 +27,10 @@ As páginas usam **Jinja2** para renderização dinâmica dos templates.
 - HTML5 / CSS3
 - Git e GitHub
 
+
 ---
 
-## Instruções de Execução
+##  Instruções de Execução
 
 ### 1 Clonar o repositório
 
@@ -41,15 +41,11 @@ cd seu-repositorio
 
 ### 2 Instalar dependências
 
-Recomenda-se criar um ambiente virtual e instalar as dependências listadas em `requirements.txt`:
-
 ```bash
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
+pip install flask firebase-admin flask-mail
 ```
 
-Se não for usar ambiente virtual (não recomendado), instale diretamente:
+Ou usando `requirements.txt` (se existir):
 
 ```bash
 pip install -r requirements.txt
@@ -87,7 +83,6 @@ app.config['MAIL_PASSWORD'] = 'sua-senha-de-app'
 ```
 
 ** Como gerar senha de aplicativo:**
-
 1. Acesse [Conta Google](https://myaccount.google.com/)
 2. Vá em **Segurança** → **Verificação em duas etapas** (ative se necessário)
 3. Clique em **Senhas de app** e gere uma nova
@@ -122,12 +117,11 @@ projeto-meio-ambiente/
 python main.py
 ```
 
-Acesse em: `http://localhost:80`
+ Acesse em: `http://localhost:80`
 
 ### 8 Fazer login
 
 **Usuários de teste:**
-
 - **Admin:** usuário `admin` / senha `1234`
 - **Usuário:** usuário `usuario` / senha `senha123`
 
@@ -135,39 +129,36 @@ Ou cadastre-se em `/cadastro`
 
 ---
 
-## Rotas da Aplicação
+##  Rotas da Aplicação
 
-| Rota                | Método    | Descrição                    |
-| ------------------- | --------- | ---------------------------- |
-| `/`                 | GET       | Página inicial com campanhas |
-| `/login`            | GET, POST | Página de login              |
-| `/logout`           | GET       | Logout do sistema            |
-| `/cadastro`         | GET, POST | Cadastro de novos usuários   |
-| `/campanha?q=busca` | GET       | Busca de campanhas           |
-| `/descricao/<id>`   | GET       | Detalhes da campanha         |
-| `/contato`          | GET, POST | Formulário de contato        |
+| Rota | Método | Descrição |
+|------|--------|-----------|
+| `/` | GET | Página inicial com campanhas |
+| `/login` | GET, POST | Página de login |
+| `/logout` | GET | Logout do sistema |
+| `/cadastro` | GET, POST | Cadastro de novos usuários |
+| `/campanha?q=busca` | GET | Busca de campanhas |
+| `/descricao/<id>` | GET | Detalhes da campanha |
+| `/contato` | GET, POST | Formulário de contato |
 
 ---
 
-## Segurança
+##  Segurança
 
-**IMPORTANTE antes de colocar em produção:**
+ **IMPORTANTE antes de colocar em produção:**
 
 1. **Mude a chave secreta:**
-
 ```python
 app.secret_key = "sua-chave-aleatoria-super-segura"
 ```
 
 2. **Use variáveis de ambiente** para senhas:
-
 ```python
 import os
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 ```
 
 3. **Crie um arquivo `.gitignore`:**
-
 ```
 serviceAccountKey.json
 *.pyc
@@ -177,42 +168,33 @@ venv/
 ```
 
 4. **Desative debug em produção:**
-
 ```python
 app.run(debug=False)
 ```
 
 ---
 
-## Solução de Problemas
+##  Solução de Problemas
 
-### Erro: "No module named 'firebase_admin'"
-
+###  Erro: "No module named 'firebase_admin'"
 **Solução:**
-
 ```bash
 pip install firebase-admin
 ```
 
-### Erro ao enviar email
-
+###  Erro ao enviar email
 **Solução:**
-
 - Verifique se a senha de aplicativo está correta
 - Confirme que a verificação em duas etapas está ativada
 - Teste com outro email
 
-### Erro: "Could not open serviceAccountKey.json"
-
+###  Erro: "Could not open serviceAccountKey.json"
 **Solução:**
-
 - Verifique se o arquivo está na raiz do projeto
 - Confirme que o nome está correto (case-sensitive)
 
-### Porta 80 já em uso
-
+###  Porta 80 já em uso
 **Solução:**
-
 ```bash
 export PORT=8080
 python main.py
@@ -220,14 +202,15 @@ python main.py
 
 ---
 
-## Licença
+##  Licença
 
 Este projeto foi desenvolvido para fins educacionais.
 
 ---
 
-## Contato
+##  Contato
 
 Para dúvidas ou sugestões, entre em contato através do formulário da aplicação ou envie email para: `meioambienteprojeto1@gmail.com`
 
 ---
+
