@@ -812,7 +812,8 @@ MIT License - Este projeto está licenciado sob a MIT License.
 - [ ] Newsletter por email
 
 ---
-- contriubuintes: André dos Santos Oliveira, Brenno Victor Saraiva de Sousa, Akiles Ribeiro Moura, José Gabriel Lima Gadelha, Guilherme Victor Chaves Silva
+- contribuintes: André dos Santos Oliveira, Brenno Victor Saraiva de Sousa, Akiles Ribeiro Moura, José Gabriel Lima Gadelha, Guilherme Victor Chaves Silva
+
 **Desenvolvido com ❤️ para um planeta mais sustentável** 🌍
 
 _Última atualização: 28/01/2026_
