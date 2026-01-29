@@ -69,8 +69,7 @@
 ### 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/seu-usuario/consciencia-ambiental.git
-cd consciencia-ambiental
+git clone https://github.com/meioambienteprojeto1-creator/meio_ambiente_trabalho.git
 ```
 
 ### 2. Criar e Ativar Ambiente Virtual
