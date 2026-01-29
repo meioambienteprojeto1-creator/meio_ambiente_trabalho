@@ -42,8 +42,8 @@
                     </div>
                     
                     <div class="campaign-header">
-                        <!-- ✅ Usa o título como parâmetro na URL -->
-                        <a href="{{ url_for('descricao', titulo=campanha.titulo) }}" class="campaign-title-link">
+                        <!-- ✅ CORRIGIDO: Usa id ao invés de titulo -->
+                        <a href="{{ url_for('descricao', id=campanha.id) }}" class="campaign-title-link">
                             <h3 class="campaign-title">{{ campanha.titulo }}</h3>
                         </a>
                         <small class="campaign-date">{{ campanha.data }}</small>
@@ -56,8 +56,8 @@
                             <span class="campaign-tag">Ambiental</span>
                             <span class="campaign-tag">Sustentabilidade</span>
                         </div>
-                        <!-- ✅ Usa o título como parâmetro na URL -->
-                        <a href="{{ url_for('descricao', titulo=campanha.titulo) }}" class="campaign-read-more">
+                        <!-- ✅ CORRIGIDO: Usa id ao invés de titulo -->
+                        <a href="{{ url_for('descricao', id=campanha.id) }}" class="campaign-read-more">
                             Ver mais
                         </a>
                     </div>

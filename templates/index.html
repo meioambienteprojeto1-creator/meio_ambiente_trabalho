@@ -27,8 +27,8 @@
             {% for campanha in campanhas %}
             <article class="index-container fade-in">
                 <div class="index-header">
-                    <!-- ✅ Usa o título como parâmetro na URL -->
-                    <a href="{{ url_for('descricao', titulo=campanha.titulo) }}" class="index-title">
+                    <!-- ✅ CORRIGIDO: Usa id ao invés de titulo -->
+                    <a href="{{ url_for('descricao', id=campanha.id) }}" class="index-title">
                         {{ campanha.titulo }}
                     </a>
                     <small class="index-date">{{ campanha.data }}</small>
