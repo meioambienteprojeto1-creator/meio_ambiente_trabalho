@@ -560,8 +560,7 @@ Clique no botão "Fork" no canto superior direito.
 #### 2. Clone seu Fork
 
 ```bash
-git clone https://github.com/seu-usuario/consciencia-ambiental.git
-cd consciencia-ambiental
+git clone https://github.com/meioambienteprojeto1-creator/meio_ambiente_trabalho.git
 ```
 
 #### 3. Crie uma Branch
@@ -749,9 +748,7 @@ A aplicação foi otimizada para:
 
 ### Opções Recomendadas
 
-- **Heroku** - Gratuito inicialmente
 - **Google Cloud** - Integração Firebase nativa
-- **AWS** - Escalabilidade máxima
 - **PythonAnywhere** - Simplicidade Python
 
 ### Passos Básicos
@@ -761,12 +758,6 @@ A aplicação foi otimizada para:
 3. Use HTTPS
 4. Implemente logging
 5. Configure backups automáticos
-
----
-
-## 📄 Licença
-
-MIT License - Este projeto está licenciado sob a MIT License.
 
 ---
 
