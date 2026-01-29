@@ -19,9 +19,7 @@ app.config['MAIL_USERNAME'] = 'seu-email@gmail.com'
 app.config['MAIL_PASSWORD'] = 'sua-senha-de-app'
 app.config['MAIL_DEFAULT_SENDER'] = 'seu-email@gmail.com'
 
-# Configurações de upload
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
+
 
 mail = Mail(app)
 
