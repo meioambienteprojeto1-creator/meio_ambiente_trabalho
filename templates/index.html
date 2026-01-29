@@ -1,47 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='icons/favicon.ico') }}"
+      type="image/x-icon"
+    />
     <title>Consciência Ambiental - Início</title>
-</head>
+  </head>
 
-<body>
+  <body>
     {% include "header.html" %}
-    
+
     <!-- Hero Section -->
     <section class="hero-index">
-        <div class="container">
-            <h1>Consciência Ambiental para um Mundo Melhor</h1>
-            <p class="hero-index-subtitle">Junte-se a nós na missão de preservar nosso planeta para as futuras gerações</p>
-        </div>
+      <div class="container">
+        <h1>Consciência Ambiental para um Mundo Melhor</h1>
+        <p class="hero-index-subtitle">
+          Junte-se a nós na missão de preservar nosso planeta para as futuras
+          gerações
+        </p>
+      </div>
     </section>
 
-    <!-- Conteúdos em Matriz 4x4 -->
+    <!-- Conteúdos - Landing Page -->
     <main class="container">
-        <h2 class="index-section-title">Últimas Campanhas Ambientais</h2>
-        
-        <div class="index-grid">
-            {% for campanha in campanhas %}
-            <article class="index-container fade-in">
-                <div class="index-header">
-                    <!-- ✅ CORRIGIDO: Usa id ao invés de titulo -->
-                    <a href="{{ url_for('descricao', id=campanha.id) }}" class="index-title">
-                        {{ campanha.titulo }}
-                    </a>
-                    <small class="index-date">{{ campanha.data }}</small>
-                </div>
-                
-                <div class="index-content">
-                    <!-- ✅ Imagem carrega diretamente da URL -->
-                    <img class="index-image" src="{{ campanha.imagem }}" alt="{{ campanha.titulo }}">
-                    <p class="index-description">{{ campanha.descricao }}</p>
-                </div>
-            </article>
-            {% endfor %}
+      <h2 class="index-section-title">Como Funciona Nossa Plataforma</h2>
+
+      <div class="landing-grid">
+        <article class="landing-card fade-in">
+          <div class="landing-card-icon">🌍</div>
+          <h3 class="landing-card-title">O Que Somos</h3>
+          <p class="landing-card-description">
+            Uma plataforma dedicada à disseminação de conhecimento e ações
+            concretas para preservar nosso planeta. Acreditamos que a
+            conscientização ambiental é o primeiro passo para uma mudança
+            significativa.
+          </p>
+        </article>
+
+        <article class="landing-card fade-in">
+          <div class="landing-card-icon">🎯</div>
+          <h3 class="landing-card-title">Para Que Servimos</h3>
+          <p class="landing-card-description">
+            Divulgamos campanhas ambientais, conectamos indivíduos interessados
+            em sustentabilidade e inspiramos ações positivas para o meio
+            ambiente através de projetos concretos e educação.
+          </p>
+        </article>
+
+        <article class="landing-card fade-in">
+          <div class="landing-card-icon">📱</div>
+          <h3 class="landing-card-title">Como Usar</h3>
+          <p class="landing-card-description">
+            Explore nossas campanhas, conheça projetos em andamento, crie suas
+            próprias iniciativas e entre em contato conosco. Tudo em um único
+            lugar para uma ação ambiental efetiva.
+          </p>
+        </article>
+      </div>
+
+      <!-- CTA Section -->
+      <section class="landing-cta">
+        <h2>Pronto para Fazer Diferença?</h2>
+        <p>
+          Explore campanhas ambientais e junte-se a um movimento de
+          sustentabilidade global
+        </p>
+        <div class="landing-cta-buttons">
+          <a href="{{ url_for('campanha') }}" class="btn-primary"
+            >Ver Campanhas</a
+          >
+          <a href="{{ url_for('cadastro') }}" class="btn-secondary"
+            >Se Cadastre</a
+          >
         </div>
+      </section>
+
+      <!-- Features Section -->
+      <div class="landing-features">
+        <h2 class="index-section-title">Recursos da Plataforma</h2>
+        <div class="features-list">
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <div>
+              <h4>Campanhas Ambientais</h4>
+              <p>Acesso a projetos e iniciativas ambientais reais</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <div>
+              <h4>Crie Sua Campanha</h4>
+              <p>Mobilize a comunidade com suas próprias iniciativas</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <div>
+              <h4>Comunidade Engajada</h4>
+              <p>Conecte-se com pessoas interessadas em sustentabilidade</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <div>
+              <h4>Informações Confiáveis</h4>
+              <p>Conteúdo sobre preservação e práticas sustentáveis</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>
