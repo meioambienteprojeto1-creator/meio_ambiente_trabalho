@@ -238,11 +238,12 @@ def criar_campanha():
         return redirect(url_for("login"))
     
     if request.method == "POST":
-        data = request.form.get("data")
+    
         titulo = request.form.get("titulo")
         descricao = request.form.get("descricao")
         descricao_avancada = request.form.get("descricao_avancada")
-        
+        imagem = request.form.get("imagem")
+
         # Validações
         if not titulo or not descricao:
             flash("Título e descrição são obrigatórios.", "danger")
@@ -269,7 +270,8 @@ def criar_campanha():
                 "descricao_avancada": descricao_avancada,
                 "data": datetime.now().strftime("%d/%m/%Y"),
                 "autor": session["usuario"],
-                "autor_email": session["usuario_email"]
+                "autor_email": session["usuario_email"],
+                "imagem": imagem
             }
             
             campanhas_ref.add(nova_campanha)

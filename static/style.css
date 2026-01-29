@@ -2758,29 +2758,6 @@ hr {
   display: inline-block;
 }
 
-/* Botões de Compartilhar */
-.share-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-sm);
-}
-
-.share-buttons button {
-  padding: var(--space-sm);
-  background-color: var(--background-alt);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  font-size: var(--font-size-sm);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.share-buttons button:hover {
-  background-color: var(--primary-light);
-  border-color: var(--primary);
-  color: var(--primary-dark);
-}
-
 /* Estatísticas */
 .detail-stats {
   display: grid;
@@ -2796,10 +2773,8 @@ hr {
   border: 1px solid var(--border-light);
 }
 
-.stat-icon {
-  font-size: 2rem;
-  margin-bottom: var(--space-xs);
-}
+
+
 
 .detail-stats p {
   font-size: var(--font-size-xs);
@@ -2875,7 +2850,5 @@ hr {
     flex-wrap: wrap;
   }
 
-  .share-buttons {
-    grid-template-columns: 1fr;
-  }
+  
 }
