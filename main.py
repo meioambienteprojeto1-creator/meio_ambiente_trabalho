@@ -291,10 +291,13 @@ def criar_campanha():
 @app.route("/descricao/<int:id>")
 def descricao(id):
     campanhas = get_campanhas()
-    if 0 <= id < len(campanhas):
-        campanha_selecionada = campanhas[id]
-    else:
-        campanha_selecionada = None
+    
+    # Procurar a campanha com o ID correspondente
+    campanha_selecionada = None
+    for campanha in campanhas:
+        if campanha.get("id") == id:
+            campanha_selecionada = campanha
+            break
 
     return render_template("descricao.html", campanha=campanha_selecionada)
 
