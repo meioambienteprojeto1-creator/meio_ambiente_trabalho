@@ -1,5 +1,6 @@
 import os
 import firebase_admin
+import unicodedata
 
 from firebase_admin import credentials, firestore, storage
 from flask import Flask, send_file, url_for, render_template, session, request, flash, redirect
@@ -31,28 +32,7 @@ firebase_admin.initialize_app(cred, {
 db = firestore.client()
 bucket = storage.bucket()
 
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-def upload_imagem_firebase(file, filename):
-    """Upload de imagem para Firebase Storage"""
-    try:
-        # Criar nome único para o arquivo
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        nome_arquivo = f"campanhas/{timestamp}_{secure_filename(filename)}"
-        
-        # Upload para Firebase Storage
-        blob = bucket.blob(nome_arquivo)
-        blob.upload_from_file(file, content_type=file.content_type)
-        
-        # Tornar público
-        blob.make_public()
-        
-        # Retornar URL pública
-        return blob.public_url
-    except Exception as e:
-        print(f"Erro no upload: {e}")
-        return None
 
 def get_campanhas():
     campanhas = []
@@ -133,7 +113,17 @@ def cadastro():
         if email_existe:
             flash("Email já cadastrado! Use outro email.", "danger")
             return render_template("cadastro.html")
+        
+        usuarios_ref = db.collection("usuarios")
+        query = usuarios_ref.where("nome", "==", nome).limit(1).stream()
+        nome_existe = False
+        for doc in query:
+            nome_existe = True
+            break
 
+        if nome_existe:
+            flash("Nome já cadastrado! Use outro nome.", "danger")
+            return render_template("cadastro.html")
         # Verifica se as senhas conferem
         if password != confirmar:
             flash("As senhas não conferem.", "danger")

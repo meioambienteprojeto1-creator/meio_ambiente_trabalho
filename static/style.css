@@ -232,6 +232,7 @@ textarea.form-control{min-height:120px;resize:vertical}
 .campaigns-container{background-color:var(--background-light);border-radius:var(--radius-2xl);padding:var(--space-xl);margin-top:var(--space-lg)}
 .campaigns-hero::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="rgba(255,255,255,0.05)" d="M50,0 C22.4,0 0,22.4 0,50 C0,77.6 22.4,100 50,100 C77.6,100 100,77.6 100,50 C100,22.4 77.6,0 50,0 Z M50,90 C27.9,90 10,72.1 10,50 C10,27.9 27.9,10 50,10 C72.1,10 90,27.9 90,50 C90,72.1 72.1,90 50,90 Z"></path></svg>');background-size:60px;opacity:.3;position:absolute}
 .campaigns-hero h1,.campaigns-hero-subtitle{position:relative;z-index:1}
+.campaigns-search-input,.campaigns-search-btn,.criar_campanha_link{z-index: 2;}
 
 .campaigns-filters{display:flex;justify-content:center;gap:var(--space-sm);margin-bottom:var(--space-lg);flex-wrap:wrap}
 .filter-btn{padding:var(--space-xs) var(--space-md);background-color:var(--background);color:var(--text-secondary);border:1px solid var(--border);border-radius:var(--radius-md);font-size:var(--font-size-sm);font-weight:500;cursor:pointer;transition:all 0.2s ease}
@@ -367,7 +368,7 @@ textarea.form-control{min-height:120px;resize:vertical}
 .empty-state p{color:var(--text-light);max-width:400px;margin:0 auto}
 
 /* ===== MENSAGENS ===== */
-.flash-messages{position:fixed;top:80px;right:var(--space-md);z-index:1000;max-width:400px}
+.flash-messages{position:fixed;top:80px;right:var(--space-md);z-index:1000;max-width:400px;background-color: #e0e0e0;}
 .flash-message{margin-bottom:var(--space-sm);padding:var(--space-md);border-radius:var(--radius-md);font-size:var(--font-size-sm);font-weight:500;animation:slideInRight 0.3s ease;box-shadow:var(--shadow-lg);border-left:4px solid transparent}
 .flash-success{background-color:var(--primary-light);color:var(--primary-dark);border-left-color:var(--primary)}
 .flash-error{background-color:#ffebee;color:#c62828;border-left-color:#f44336}
