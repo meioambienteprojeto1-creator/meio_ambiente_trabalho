@@ -262,7 +262,9 @@ def criar_campanha():
                 "imagem": imagem
             }
             
-            campanhas_ref.add(nova_campanha)
+            db.collection("conteudo").document(str(proximo_id)).set(nova_campanha)
+
+
             
             flash("Campanha criada com sucesso! 🎉", "success")
             
@@ -281,10 +283,12 @@ def criar_campanha():
 @app.route("/descricao/<int:id>")
 def descricao(id):
     campanhas = get_campanhas()
-    if 0 <= id < len(campanhas):
-        campanha_selecionada = campanhas[id]
-    else:
-        campanha_selecionada = None
+
+    campanha_selecionada = None
+    for campanha in campanhas:
+        if campanha["id"] == id:
+            campanha_selecionada = campanha
+            break
 
     return render_template("descricao.html", campanha=campanha_selecionada)
 
